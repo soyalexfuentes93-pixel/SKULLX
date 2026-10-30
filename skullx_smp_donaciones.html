@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100b18">
+<title>SKULLX SMP 🕸️ | Apoya el servidor</title>
+<style>
+:root{--bg:#0d0913;--panel:#171020;--panel2:#21142d;--red:#ff3158;--purple:#9b5cff;--text:#fff;--muted:#c4b8d0}
+*{box-sizing:border-box}
+body{margin:0;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(ellipse at 15% 5%,#4b1740 0,transparent 35%),radial-gradient(ellipse at 90% 20%,#29145b 0,transparent 36%),var(--bg);min-height:100vh}
+.wrap{width:min(980px,92%);margin:auto;padding:28px 0 46px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:34px}
+.brand{font-weight:950;letter-spacing:2px;font-size:18px}.brand span{color:var(--red)}
+.pill{border:1px solid #ffffff24;background:#ffffff0b;border-radius:99px;padding:8px 13px;color:#e8dff0;font-size:12px}
+.hero{text-align:center;padding:25px 10px 28px}
+.web{font-size:32px;filter:drop-shadow(0 0 16px #b54bff)}
+h1{font-size:clamp(36px,8vw,66px);line-height:1;margin:12px 0;background:linear-gradient(95deg,#ff4769,#bb65ff 65%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:1px}
+.sub{color:var(--muted);max-width:590px;margin:12px auto 0;line-height:1.65}
+.hero-tag{display:inline-block;margin-top:18px;border:1px solid #a45cff77;border-radius:99px;padding:7px 13px;color:#e8cfff;font-size:12px;background:#8b43db18}
+.card{max-width:720px;margin:22px auto 0;padding:clamp(20px,5vw,34px);background:linear-gradient(145deg,#1d1429ed,#110d19f2);border:1px solid #ffffff19;border-radius:24px;box-shadow:0 20px 70px #0008}
+.card h2{text-align:center;margin:0;font-size:24px}.desc{text-align:center;color:var(--muted);font-size:14px;margin:9px 0 24px}
+.amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.amount{border:1px solid #ffffff20;border-radius:15px;background:#ffffff08;color:white;padding:17px 8px;cursor:pointer;transition:.18s;font-size:21px;font-weight:850}
+.amount small{display:block;color:#bfb1ca;font-size:11px;font-weight:500;margin-top:5px}
+.amount:hover,.amount.selected{border-color:var(--purple);background:linear-gradient(140deg,#792d5c55,#713dd255);box-shadow:0 0 0 2px #a75aff20}
+.custom{margin-top:18px}.custom label{display:block;color:#e6dbea;font-size:13px;margin-bottom:8px}
+.inputrow{display:flex;align-items:center;background:#0d0913;border:1px solid #ffffff24;border-radius:13px;padding:0 14px}
+.currency{color:#d8c6e7;font-weight:800}
+input{width:100%;background:transparent;border:0;outline:0;color:white;font-size:17px;padding:14px 9px}
+.cta{width:100%;border:0;border-radius:14px;padding:16px;margin-top:18px;background:linear-gradient(95deg,var(--red),#9a43e8);color:white;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 9px 25px #9b35a955}
+.cta:active{transform:scale(.99)}
+.note{font-size:11px;color:#a99bb5;text-align:center;line-height:1.55;margin:14px 3px 0}
+.thanks{text-align:center;margin:25px auto 0;color:#d9cde2;font-size:13px}
+footer{text-align:center;color:#84788e;font-size:11px;margin-top:32px}
+.toast{display:none;margin-top:13px;padding:12px;border-radius:12px;background:#3a203f;color:#f5e8ff;text-align:center;font-size:13px}
+@media(max-width:520px){.amounts{grid-template-columns:repeat(2,1fr)}nav{margin-bottom:18px}.card{border-radius:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><div class="brand">🕸️ <span>SKULLX</span> SMP</div><div class="pill">COMUNIDAD • MINECRAFT</div></nav>
+<header class="hero">
+<div class="web">🕸️</div>
+<h1>SKULLX SMP</h1>
+<p class="sub">Una comunidad, una aventura. Tu apoyo nos ayuda a mantener y mejorar nuestro servidor para que la diversión siga creciendo.</p>
+<div class="hero-tag">❤️ APOYA EL SERVIDOR • CUALQUIER APORTE CUENTA</div>
+</header>
+<main class="card">
+<h2>Elige tu apoyo</h2>
+<p class="desc">Selecciona una cantidad. Toda aportación voluntaria es bienvenida.</p>
+<div class="amounts" id="amounts">
+<button class="amount" data-value="1">$1<small>Pequeño apoyo</small></button>
+<button class="amount" data-value="3">$3<small>¡Muchas gracias!</small></button>
+<button class="amount selected" data-value="5">$5<small>Apoyo especial</small></button>
+<button class="amount" data-value="10">$10<small>Gran apoyo</small></button>
+<button class="amount" data-value="20">$20<small>¡Eres increíble!</small></button>
+<button class="amount" data-value="50">$50<small>Apoyo gigante</small></button>
+</div>
+<div class="custom"><label for="custom">O escribe otra cantidad (USD)</label><div class="inputrow"><span class="currency">$</span><input id="custom" type="number" min="1" max="500" step="1" placeholder="Cantidad personalizada"></div></div>
+<button class="cta" id="support">❤️ Apoyar a SKULLX SMP</button>
+<div class="toast" id="toast" role="status"></div>
+<p class="note">Las aportaciones son voluntarias y se destinan a ayudar con los gastos y mejoras del servidor. No compras rangos, objetos ni ventajas dentro del juego.</p>
+</main>
+<p class="thanks">🕷️ Gracias por ser parte de la familia SKULLX SMP.</p>
+<footer>SKULLX SMP 🕸️ • Página de apoyo comunitario</footer>
+</div>
+<script>
+const buttons=[...document.querySelectorAll('.amount')], custom=document.getElementById('custom'), toast=document.getElementById('toast');
+let selected=5;
+buttons.forEach(b=>b.addEventListener('click',()=>{selected=Number(b.dataset.value);custom.value='';buttons.forEach(x=>x.classList.toggle('selected',x===b));}));
+custom.addEventListener('input',()=>{buttons.forEach(x=>x.classList.remove('selected'));});
+document.getElementById('support').addEventListener('click',()=>{
+ const amount=custom.value.trim()?Number(custom.value):selected;
+ if(!Number.isFinite(amount)||amount<1||amount>500){toast.style.display='block';toast.textContent='Elige una cantidad entre $1 y $500 USD.';return;}
+ toast.style.display='block';toast.textContent='¡Gracias por querer apoyar con $'+amount.toFixed(2)+'! Los pagos todavía no están conectados. Primero debemos configurar una cuenta de cobros con un adulto de confianza.';
+});
+</script>
+</body>
+</html>
